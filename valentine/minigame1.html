@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Find My Heart</title>
+  <link rel="stylesheet" href="stylegame.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Find my heart ❤️</h2>
+  <p>One of these hides my heart…</p>
+
+  <div class="game-container" id="game"></div>
+
+  <p id="result"></p>
+  <button id="retry" class="button">Retry 🔁</button>
+
+
+  <a href="congrats.html" class="button">Next →</a>
+</div>
+
+<script>
+  const game = document.getElementById("game");
+  const result = document.getElementById("result");
+  const retryBtn = document.getElementById("retry");
+
+  const totalCards = 6;
+  let heartIndex;
+
+  function startGame() {
+    game.innerHTML = "";
+    result.textContent = "";
+    heartIndex = Math.floor(Math.random() * totalCards);
+
+    for (let i = 0; i < totalCards; i++) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.addEventListener("click", () => {
+        if (i === heartIndex) {
+          card.textContent = "❤️";
+          result.textContent = "You found my heart 💘";
+        } else {
+          card.textContent = "💔";
+        }
+
+        document.querySelectorAll(".card").forEach(c => {
+          c.style.pointerEvents = "none";
+        });
+      });
+
+      game.appendChild(card);
+    }
+  }
+
+  startGame();
+
+  retryBtn.addEventListener("click", startGame);
+</script>
+
+
+</body>
+</html>

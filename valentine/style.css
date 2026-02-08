@@ -1,0 +1,575 @@
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fbcfe8, #fdf2f8, #ffe4e6);
+  background-size: 400% 400%;
+  animation: bgMove 10s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 2.2rem;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 20px;
+  box-shadow:
+    0 20px 40px rgba(236, 72, 153, 0.25),
+    0 0 30px rgba(236, 72, 153, 0.15);
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  color: #9d174d;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(236, 72, 153, 0.3);
+}
+
+p {
+  color: #444;
+  line-height: 1.5;
+}
+
+.gallery-intro {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+
+/* Buttons */
+a.button, label.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+  color: white;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+}
+
+a.button:hover, label.button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(236, 72, 153, 0.6);
+}
+
+
+/* Back / Next spacing */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+/* Reasons list */
+.reasons {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.reasons li {
+  background: #fce7f3;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(236, 72, 153, 0.35);
+}
+
+.gallery-grid img {
+  background: #fff;
+  padding: 6px;
+}
+
+.gallery-grid img:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.gallery-grid img:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+
+/* Hide checkbox */
+input {
+  display: none;
+}
+
+/* Center reveal button */
+.hidden-row {
+  display: flex;              /* ✅ FIXED (was invalid) */
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Hidden content */
+.hidden {
+  display: none;              /* hidden by default */
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Reveal hidden content when checked */
+input:checked ~ .hidden {
+  display: block;             /* ✅ FIXED selector */
+}
+
+/* Floating hearts background */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-hearts span {
+  position: absolute;
+  bottom: -50px;
+  font-size: 26px;
+  opacity: 0.35;
+  animation: floatUp linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+}
+
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-110vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* ===== FANCY YES PAGE EFFECTS ===== */
+
+/* Floating hearts */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-hearts span {
+  position: absolute;
+  bottom: -60px;
+  font-size: 32px;
+  opacity: 0.35;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Make sure container stays on top */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Heartbeat */
+.heartbeat {
+  display: inline-block;
+  animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.2); }
+  40%  { transform: scale(1); }
+  60%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+/* Center + size GIF */
+.yes-gif {
+  display: block;
+  margin: 1.2rem auto;
+  max-width: 240px;
+  border-radius: 14px;
+}
+
+/* Soft fade + pop-in */
+.fancy-in {
+  animation: popIn 0.9s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Glowing button */
+.glow {
+  box-shadow: 0 0 12px rgba(236,72,153,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glow:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(236,72,153,0.9);
+}
+
+.heartbeat {
+  display: inline-block;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ===== UNLOCKABLE REASONS ===== */
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.reason-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 1.5rem;
+  min-height: 140px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reason-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Locked text */
+.lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+/* Hidden reason */
+.reason-text {
+  position: absolute;
+  inset: 0;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.05rem;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* UNLOCK */
+.reason-card input:checked ~ .lock {
+  opacity: 0;
+}
+
+.reason-card input:checked ~ .reason-text {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* CONFETTI GIF BACKGROUND */
+.confetti-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8; /* adjust if too strong */
+}
+
+/* keep container above */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.carnation-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  opacity: 0.16;          /* very soft */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ✨ EDGE SPARKLE HOVER EFFECT ✨ */
+a.button, label.button {
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+a.button:hover, label.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.45);
+}
+
+a.button::before,
+a.button::after,
+label.button::before,
+label.button::after {
+  content: '✦';
+  position: absolute;
+  font-size: 12px;
+  color: #ffd1e8;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+a.button::before,
+label.button::before {
+  top: -6px;
+  left: -6px;
+}
+
+a.button::after,
+label.button::after {
+  bottom: -6px;
+  right: -6px;
+}
+
+/* show sparkles on hover */
+a.button:hover::before,
+a.button:hover::after,
+label.button:hover::before,
+label.button:hover::after {
+  opacity: 1;
+}
+
+a.button span,
+label.button span {
+  position: absolute;
+}
+
+/* ✨ 4-CORNER PULSING SPARKLE BUTTON ✨ */
+a.button, label.button {
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* lift + glow */
+a.button:hover, label.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(236, 72, 153, 0.45);
+}
+
+/* sparkle base */
+a.button::before,
+a.button::after,
+label.button::before,
+label.button::after {
+  content: '✦';
+  position: absolute;
+  font-size: 10px;
+  color: #ffd1e8;
+  opacity: 0;
+  animation: sparkle-pulse 1.4s ease-in-out infinite;
+}
+
+/* top-left */
+a.button::before,
+label.button::before {
+  top: -6px;
+  left: -6px;
+}
+
+/* bottom-right */
+a.button::after,
+label.button::after {
+  bottom: -6px;
+  right: -6px;
+}
+
+/* extra sparkles using box-shadow trick */
+a.button span,
+label.button span {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* show sparkles on hover */
+a.button:hover::before,
+a.button:hover::after,
+label.button:hover::before,
+label.button:hover::after {
+  opacity: 1;
+}
+
+/* helper sparkle span */
+a.button .sparkles,
+label.button .sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* top-right */
+a.button .sparkles::before,
+label.button .sparkles::before {
+  content: '✦';
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 10px;
+  color: #ffd1e8;
+  opacity: 0;
+  animation: sparkle-pulse 1.4s ease-in-out infinite;
+}
+
+/* bottom-left */
+a.button .sparkles::after,
+label.button .sparkles::after {
+  content: '✦';
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  font-size: 10px;
+  color: #ffd1e8;
+  opacity: 0;
+  animation: sparkle-pulse 1.4s ease-in-out infinite;
+}
+
+/* show helper sparkles on hover */
+a.button:hover .sparkles::before,
+a.button:hover .sparkles::after,
+label.button:hover .sparkles::before,
+label.button:hover .sparkles::after {
+  opacity: 1;
+}
+
+/* pulse animation */
+@keyframes sparkle-pulse {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Credits Scroll */
+.credits-container {
+  height: 300px; /* height of your card or desired visible area */
+  overflow: hidden;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.credits {
+  position: absolute;
+  bottom: -100%; /* start offscreen */
+  width: 100%;
+  text-align: center;
+  animation: rollCredits 20s linear forwards; /* adjust duration */
+}
+
+.credits h1 {
+  font-size: 1.6rem;
+  color: #9d174d; /* matches your headings */
+  margin: 1rem 0 0.5rem;
+}
+
+.credits p {
+  font-size: 1rem;
+  color: #444;
+  margin: 0.3rem 0;
+}
+
+/* Animate rolling credits */
+@keyframes rollCredits {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 100%;
+  }
+}
+
+
